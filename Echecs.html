@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Echecs</title>
+</head>
+<body>
+    <section id="conteneur">
+        
+    </section>
+    <script>
+        class Echiquier{           
+            figures = [ "tour", "cavalier", "fou", "reine", "roi", "fou", "cavalier", "tour", "pion", "pion", "pion", "pion", "pion", "pion", "pion", "pion" ]
+            constructor(){
+               this.tableauElements = [Array(8), Array(8), Array(8), Array(8), Array(8), Array(8), Array(8), Array(8)]   //двумерный массив 8x8
+            }
+        
+            render(){    //pientre echiquier
+                let flag = true
+                for (var i = 0; i < 8; i++) {
+                    for  (var j = 0; j < 8; j++) {  
+                        let element = document.createElement("div") // creer un nouvel element div 
+                        this.tableauElements[i][j]=element //вносим в двухмерный масси объект
+                        if  (j==0) flag = !flag  
+                        if (flag)
+                        element.classList.add ("cellulesNoires") 
+                            else element.classList.add ("cellulesBlanche") 
+                        element.innerHTML = "<p></p>" //rajout un paragraphe à l'interieur dans element
+                        document.querySelector("#conteneur").appendChild(element) //mettre div à l'interieur #conteneur 
+                        flag = !flag
+                    }
+                } 
+            }
+
+            poserFugures(){
+                for  (var j = 0; j < 8; j++) {  
+                    let element = this.tableauElements[1][j]
+                    element.innerHTML = "<p>"+this.figures[j+8]+" NOIR</p>" //rajout des pions en ligne 2
+                    element = this.tableauElements[0][j]
+                    element.innerHTML = "<p>"+this.figures[j]+" NOIR</p>" //rajout des pions en ligne 1
+                    element = this.tableauElements[6][j]
+                    element.innerHTML = "<p>"+this.figures[j+8]+" BLANC</p>" //rajout des pions en ligne 7
+                    element = this.tableauElements[7][j]
+                    element.innerHTML = "<p>"+this.figures[j]+" BLANC</p>" //rajout des pions en ligne 8
+                } 
+            }
+        }
+            let newEchiquier = new Echiquier() // appele le constructor de la class Echiquier
+            newEchiquier.render() 
+            newEchiquier.poserFugures()
+          //  console.log(tableauElements)
+
+    </script>
+</body>
+</html>
