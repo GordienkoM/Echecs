@@ -8,26 +8,18 @@
     <title>Echecs</title>
 </head>
 <body>
-    <section id="conteneur">
-        
-    </section>
+    <section id="conteneur"> </section>
     <script>
         class Echiquier{ 
-            //tableau des images de figures blanches          
-            figuresBlanches = [ "<img src='img/Chess_1.png' alt='tour'>", "<img src='img/Chess_2.png' alt='cavalier'>", "<img src='img/Chess_3.png' alt='fou'>", 
-            "<img src='img/Chess_4.png' alt='reine'>", "<img src='img/Chess_5.png' alt='roi'>","<img src='img/Chess_3.png' alt='fou'>", "<img src='img/Chess_2.png' alt='cavalier'>",
-            "<img src='img/Chess_1.png' alt='tour'>","<img src='img/Chess_6.png' alt='pion '>", "<img src='img/Chess_6.png' alt='pion '>", "<img src='img/Chess_6.png' alt='pion '>", 
-            "<img src='img/Chess_6.png' alt='pion '>", "<img src='img/Chess_6.png' alt='pion '>", "<img src='img/Chess_6.png' alt='pion '>","<img src='img/Chess_6.png' alt='pion '>", "<img src='img/Chess_6.png' alt='pion '>" ]
-            //tableau des images de figures noires 
-            figuresNoires = [ "<img src='img/Chess_7.png' alt='tour'>", "<img src='img/Chess_8.png' alt='cavalier'>", "<img src='img/Chess_9.png' alt='fou'>", 
-            "<img src='img/Chess_10.png' alt='reine'>", "<img src='img/Chess_11.png' alt='roi'>","<img src='img/Chess_9.png' alt='fou'>", "<img src='img/Chess_8.png' alt='cavalier'>",
-            "<img src='img/Chess_7.png' alt='tour'>","<img src='img/Chess_12.png' alt='pion '>", "<img src='img/Chess_12.png' alt='pion '>", "<img src='img/Chess_12.png' alt='pion '>", 
-            "<img src='img/Chess_12.png' alt='pion '>", "<img src='img/Chess_12.png' alt='pion '>", "<img src='img/Chess_12.png' alt='pion '>","<img src='img/Chess_12.png' alt='pion '>", "<img src='img/Chess_12.png' alt='pion '>"  ]
+            //tableau de noms des images de figures blanches          
+            figuresBlanches = ["tour BLANC", "cavalier BLANC", "fou BLANC", "reine BLANC", "roi BLANC", "fou BLANC", "cavalier BLANC", "tour BLANC","pion BLANC"];
+            //tableau de noms des images de figures noires 
+            figuresNoires = ["tour NOIR", "cavalier NOIR", "fou NOIR", "reine NOIR", "roi NOIR", "fou NOIR", "cavalier NOIR", "tour NOIR","pion NOIR"];
             constructor(){
                this.tableauElements = [Array(8), Array(8), Array(8), Array(8), Array(8), Array(8), Array(8), Array(8)]  
             }
-        
-            render(){    //pientre echiquier
+            //pientre echiquier      
+            render(){    
                 let flag = true
                 for (var i = 0; i < 8; i++) {
                     for  (var j = 0; j < 8; j++) {  
@@ -42,23 +34,23 @@
                     }
                 } 
             }
-
-            mettreFugures(){
+            //poser des figures sur echiquier
+            poserFigures(){
                 for  (var j = 0; j < 8; j++) {  
                     let element = this.tableauElements[0][j]
-                    element.innerHTML = "<p>"+this.figuresBlanches[j]+"</p>" //rajout des figures en ligne 1
+                    element.innerHTML = "<p>"+"<img src='img/"+this.figuresBlanches[j]+".png' alt='"+this.figuresBlanches[j]+ "'></p>" //rajout des figures en ligne 1
                     element = this.tableauElements[1][j]
-                    element.innerHTML = "<p>"+this.figuresBlanches[j+8]+"</p>" //rajout des pions en ligne 2
+                    element.innerHTML = "<p>"+"<img src='img/"+this.figuresBlanches[8]+".png' alt='"+this.figuresBlanches[8]+ "'></p>" //rajout des pions en ligne 2
                     element = this.tableauElements[6][j]
-                    element.innerHTML = "<p>"+this.figuresNoires[j+8]+"</p>" //rajout des pions en ligne 7
+                    element.innerHTML = "<p>"+"<img src='img/"+this.figuresNoires[8]+".png' alt='"+this.figuresNoires[8]+ "'></p>"//rajout des pions en ligne 7
                     element = this.tableauElements[7][j]
-                    element.innerHTML = "<p>"+this.figuresNoires[j]+"</p>" //rajout des figures en ligne 8
+                    element.innerHTML = "<p>"+"<img src='img/"+this.figuresNoires[j]+".png' alt='"+this.figuresNoires[j]+ "'></p>" //rajout des figures en ligne 8
                 } 
             }
         }
         let newEchiquier = new Echiquier() // appele le constructor de la class Echiquier
         newEchiquier.render() 
-        newEchiquier.mettreFugures()
+        newEchiquier.poserFigures()
         
     </script>
 </body>
